@@ -7,6 +7,11 @@ using DG.Tweening;
 public class Transition : MonoBehaviour
 {
     /// <summary>
+    /// インスタンス
+    /// </summary>
+    private static Transition m_Instance = null;
+
+    /// <summary>
     /// フェード時間
     /// </summary>
     private static float m_FadeDuration = 2.0f;
@@ -18,8 +23,28 @@ public class Transition : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
-        m_FadeImage = GameObject.Find("TransitionCanvas/Image").GetComponent<Image>();
+        if (CheckInstance())
+        {
+
+            DontDestroyOnLoad(this);
+            m_FadeImage = GameObject.Find("TransitionCanvas/Image").GetComponent<Image>();
+        }
+    }
+
+    private bool CheckInstance()
+    {
+        if (m_Instance == null)
+        {
+            m_Instance = (Transition)this;
+            return true;
+        }
+        else if (m_Instance == this)
+        {
+            return true;
+        }
+
+        Destroy(this);
+        return false;
     }
 
     /// <summary>
@@ -54,5 +79,13 @@ public class Transition : MonoBehaviour
                 SceneManager.LoadScene(sceneName);
             });
         }
+    }
+
+    /// <summary>
+    /// クリア
+    /// </summary>
+    public static void Clear(Sequence seq)
+    {
+        seq.Join(m_FadeImage.DOFade(0.0f, m_FadeDuration));
     }
 }
