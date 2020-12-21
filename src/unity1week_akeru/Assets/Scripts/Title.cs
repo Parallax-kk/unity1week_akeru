@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using AudioManager;
 
@@ -24,6 +25,12 @@ public class Title : MonoBehaviour
     [SerializeField]
     private GameObject m_PresentPrefab = null;
 
+    /// <summary>
+    /// スタートボタン
+    /// </summary>
+    [SerializeField]
+    private Button m_StartButton = null;
+
     private void Awake()
     {
         BGMManager.Instance.Play(BGMPath.TITLE, 1.0f, 0.0f, 1.0f, true);
@@ -45,8 +52,9 @@ public class Title : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void ClickStartButton()
     {
-        
+        m_StartButton.interactable = false;
+        Transition.Black("Opening");
     }
 }
