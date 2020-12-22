@@ -5,7 +5,8 @@
 /// </summary>
 public static class BGMPath{
 
-	public const string TITLE = "BGM/Title";
+	public const string OPENING = "BGM/Opening";
+	public const string TITLE   = "BGM/Title";
 
 }
 

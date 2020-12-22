@@ -15,6 +15,7 @@ public class Transition : MonoBehaviour
     /// フェード時間
     /// </summary>
     private static float m_FadeDuration = 2.0f;
+    public static float GetDuration() { return m_FadeDuration; }
 
     /// <summary>
     /// フェード画像

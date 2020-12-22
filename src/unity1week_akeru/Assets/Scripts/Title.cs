@@ -34,7 +34,6 @@ public class Title : MonoBehaviour
     private void Awake()
     {
         BGMManager.Instance.Play(BGMPath.TITLE, 1.0f, 0.0f, 1.0f, true);
-        BGMManager.Instance.ChangeBaseVolume(0.5f);
         StartCoroutine("CreatePresent");
     }
 
@@ -55,6 +54,8 @@ public class Title : MonoBehaviour
     public void ClickStartButton()
     {
         m_StartButton.interactable = false;
+        BGMManager.Instance.FadeOut(Transition.GetDuration());
+
         Transition.Black("Opening");
     }
 }

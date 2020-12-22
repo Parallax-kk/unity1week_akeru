@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using AudioManager;
 using DG.Tweening;
 using Fungus;
 
@@ -15,6 +16,8 @@ public class Opening : MonoBehaviour
 
     private void Start()
     {
+        BGMManager.Instance.Play(BGMPath.OPENING, 1.0f, 0.0f, 1.0f, true);
+
         Sequence seq = DOTween.Sequence();
         Transition.Clear(seq);
 
@@ -29,6 +32,7 @@ public class Opening : MonoBehaviour
     /// </summary>
     public void NextScene()
     {
-        Transition.Black();
+        BGMManager.Instance.FadeOut(Transition.GetDuration());
+        Transition.Black("Menu");
     }
 }

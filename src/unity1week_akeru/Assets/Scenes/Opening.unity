@@ -969,7 +969,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1323388933}
   selectedCommands:
-  - {fileID: 1323388947}
+  - {fileID: 1323388948}
   variables: []
   description: 
   stepPause: 0
@@ -1423,7 +1423,7 @@ MonoBehaviour:
   indentLevel: 0
   targetObject: {fileID: 1145848130}
   methodName: NextScene
-  delay: 2
+  delay: 0
 --- !u!1 &1484328535
 GameObject:
   m_ObjectHideFlags: 0
