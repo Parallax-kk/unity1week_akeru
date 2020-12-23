@@ -1028,7 +1028,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 56
     y: 33
-    width: 97
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1435,14 +1435,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1323388930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd2f6be51b3d7490ba5633ee095d0391, type: 3}
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 16
+  itemId: 17
   indentLevel: 0
-  soundClip: {fileID: 8300000, guid: 51ca853b79c095543992a33a4b200fdb, type: 3}
-  volume: 1
-  waitUntilFinished: 0
+  targetObject: {fileID: 1145848130}
+  methodName: PlayKiraKira
+  delay: 0
 --- !u!1 &1484328535
 GameObject:
   m_ObjectHideFlags: 0

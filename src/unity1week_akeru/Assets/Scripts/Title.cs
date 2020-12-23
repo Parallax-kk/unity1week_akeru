@@ -33,6 +33,8 @@ public class Title : MonoBehaviour
 
     private void Awake()
     {
+        BGMManager.Instance.ChangeBaseVolume(0.1f);
+        SEManager.Instance.ChangeBaseVolume(0.1f);
         BGMManager.Instance.Play(BGMPath.TITLE, 1.0f, 0.0f, 1.0f, true);
         StartCoroutine("CreatePresent");
     }

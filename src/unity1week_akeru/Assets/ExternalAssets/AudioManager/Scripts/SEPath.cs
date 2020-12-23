@@ -5,6 +5,8 @@
 /// </summary>
 public static class SEPath{
 
+	public const string ADD_HOLE  = "SE/AddHole";
+	public const string KIRA_KIRA = "SE/KiraKira";
 
 }
 

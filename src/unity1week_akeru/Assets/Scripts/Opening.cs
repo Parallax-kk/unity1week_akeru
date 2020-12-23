@@ -28,6 +28,14 @@ public class Opening : MonoBehaviour
     }
 
     /// <summary>
+    /// キラキラ音
+    /// </summary>
+    public void PlayKiraKira()
+    {
+        SEManager.Instance.Play(SEPath.KIRA_KIRA);
+    }
+
+    /// <summary>
     /// 次のシーンへ遷移
     /// </summary>
     public void NextScene()
