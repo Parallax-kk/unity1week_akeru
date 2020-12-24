@@ -28,6 +28,26 @@ public class MasterData : MonoBehaviour
     private static Dictionary<int, bool> m_dicGetHero = new Dictionary<int, bool>();
     public static void AddHero(int id) { m_dicGetHero[id] = true; }
 
+    /// <summary>
+    /// ベルトアニメーションスピード係数
+    /// </summary>
+    private static float m_BeltAnimSpeedCoefficient = 1.0f;
+    public static void  AddBeltAnimSpeedCoefficient(float value) { m_BeltAnimSpeedCoefficient += value; }
+    public static float GetBeltAnimSpeedCoefficient(           ) { return m_BeltAnimSpeedCoefficient;   }
+
+    /// <summary>
+    /// レース生成スピード係数
+    /// </summary>
+    private static float m_WreathInstatiateSpeedCoefficient = 1.0f;
+    public static void  AddWreathInstatiateSpeedCoefficient(float value) { m_WreathInstatiateSpeedCoefficient += value; }
+    public static float GetWreathInstatiateSpeedCoefficient(           ) { return m_WreathInstatiateSpeedCoefficient;   }
+
+    // 獲得お金係数
+    private static float m_MoneyCoefficient = 1.0f;
+    public static void  AddMoneyCoefficient(float value) { m_MoneyCoefficient += value; }
+    public static float GetMoneyCoefficient(           ) { return m_MoneyCoefficient;   }
+
+
     private void Awake()
     {
         CheckInstance();

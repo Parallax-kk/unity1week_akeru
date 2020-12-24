@@ -45,6 +45,12 @@ public class Work_WreathHole : MonoBehaviour
     private float m_BeltSpeed = 5.0f;
 
     /// <summary>
+    /// ベルトスピード係数
+    /// </summary>
+    [SerializeField]
+    private float m_BeltSpeedCoefficient = 1.0f;
+
+    /// <summary>
     /// ベルトアニメーションスピード
     /// </summary>
     [SerializeField]
@@ -56,10 +62,22 @@ public class Work_WreathHole : MonoBehaviour
     [SerializeField]
     private float m_WreathInstantiateSpeed = 3.0f;
 
-    private void Start()
+    /// <summary>
+    /// レース生成スピード係数
+    /// </summary>
+    [SerializeField]
+    private float m_WreathInstatiateSpeedCoefficient = 1.0f;
+
+    private void Awake()
     {
         m_MoneyText.text = string.Format("{0:#,0} 円", MasterData.GetMoney().ToString());
-        
+
+        m_BeltSpeedCoefficient = MasterData.GetBeltAnimSpeedCoefficient();
+        m_WreathInstatiateSpeedCoefficient = MasterData.GetWreathInstatiateSpeedCoefficient();
+    }
+
+    private void Start()
+    {
         BGMManager.Instance.Play(BGMPath.WORKING, 1.0f, 0.0f, 1.0f, true);
         Transition.Clear();
         StartCoroutine("CreateWreath");
@@ -74,7 +92,7 @@ public class Work_WreathHole : MonoBehaviour
         while (true)
         {
             Instantiate(m_WreathPrefab, m_WreathSpownPoint.transform);
-            yield return new WaitForSeconds(m_WreathInstantiateSpeed);
+            yield return new WaitForSeconds(m_WreathInstantiateSpeed * m_WreathInstatiateSpeedCoefficient);
         }
     }
 
@@ -93,7 +111,7 @@ public class Work_WreathHole : MonoBehaviour
     /// </summary>
     private void MoveBelt()
     {
-        float scroll = Mathf.Repeat(Time.time * -m_BeltAnimSpeed, 1);
+        float scroll = Mathf.Repeat(Time.time * -m_BeltAnimSpeed * m_BeltSpeedCoefficient, 1);
         Vector2 offset = new Vector2(scroll, 0);
         m_BeltRenderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
     }
@@ -141,7 +159,7 @@ public class Work_WreathHole : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (m_BeltSpeed, 0.0f);
+        collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (m_BeltSpeed * m_BeltSpeedCoefficient, 0.0f);
     }
 
     /// <summary>
